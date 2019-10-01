@@ -1,0 +1,47 @@
+ <!DOCTYPE html>
+<html>
+<title>HTML Tutorial</title>
+<body>
+<form>
+	Kérek egy csaladnevet:<br />
+	<input type="text" name="input_csaladnev"><br />
+	Kérek egy utonevet:<br />
+	<input type="text" name="input_utonevet"><br />
+	Kérem a korod:<br />
+	<input type="number" name="input_kor"><br />
+	<input type="submit" value="kiiratas">	
+</form>
+
+<?php
+if (isset($_GET["input_csaladnev"]) and isset($_GET["input_utonevet"]) and isset($_GET["input_kor"]) and  !empty($_GET["input_kor"]) and 0>($_GET["input_kor"]) ) {
+	$output = new ember();
+	$output->set_csaladnev($_GET["input_csaladnev"]);
+	$output->set_utonevet($_GET["input_utonevet"]);
+	$output->set_kor($_GET["input_kor"]);
+	
+	echo "Név: " . $output->get_csaladnev()." ". $output->get_utonev() ." , ". $output->get_kor()  ." eves vagy! ". "<br />";
+}
+
+
+
+?>
+
+
+</body>
+</html> 
+
+<?php
+
+class ember{
+	public $nev1="";
+	public $nev2="";
+	public $kor=0;
+	public function set_csaladnev ($nev1) { $this->nev1 = $nev1; }
+	public function get_csaladnev() {return $this->nev1; }
+	public function set_utonevet($nev2) { $this->nev2 = $nev2; }
+	public function get_utonev() {return $this->nev2; }
+	public function set_kor($kor) { $this->kor = $kor; }
+	public function get_kor() {return $this->kor; }
+	
+}
+?>
